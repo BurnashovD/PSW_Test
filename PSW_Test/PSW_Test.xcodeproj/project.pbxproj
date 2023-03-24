@@ -16,6 +16,16 @@
 		A5FBF8F629CE4CDB002C07C3 /* PSW_TestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FBF8F529CE4CDB002C07C3 /* PSW_TestTests.swift */; };
 		A5FBF90029CE4CDB002C07C3 /* PSW_TestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FBF8FF29CE4CDB002C07C3 /* PSW_TestUITests.swift */; };
 		A5FBF90229CE4CDB002C07C3 /* PSW_TestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FBF90129CE4CDB002C07C3 /* PSW_TestUITestsLaunchTests.swift */; };
+		A5FBF91929CE4D46002C07C3 /* MapboxCommon.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FBF90F29CE4D32002C07C3 /* MapboxCommon.xcframework */; };
+		A5FBF91A29CE4D46002C07C3 /* MapboxCommon.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5FBF90F29CE4D32002C07C3 /* MapboxCommon.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A5FBF91C29CE4D47002C07C3 /* MapboxCoreMaps.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FBF91229CE4D32002C07C3 /* MapboxCoreMaps.xcframework */; };
+		A5FBF91D29CE4D47002C07C3 /* MapboxCoreMaps.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5FBF91229CE4D32002C07C3 /* MapboxCoreMaps.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A5FBF91E29CE4D48002C07C3 /* MapboxMaps.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FBF91029CE4D32002C07C3 /* MapboxMaps.xcframework */; };
+		A5FBF91F29CE4D48002C07C3 /* MapboxMaps.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5FBF91029CE4D32002C07C3 /* MapboxMaps.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A5FBF92029CE4D49002C07C3 /* MapboxMobileEvents.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FBF91129CE4D32002C07C3 /* MapboxMobileEvents.xcframework */; };
+		A5FBF92129CE4D49002C07C3 /* MapboxMobileEvents.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5FBF91129CE4D32002C07C3 /* MapboxMobileEvents.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A5FBF92229CE4D4B002C07C3 /* Turf.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FBF91729CE4D40002C07C3 /* Turf.xcframework */; };
+		A5FBF92329CE4D4B002C07C3 /* Turf.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5FBF91729CE4D40002C07C3 /* Turf.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +45,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		A5FBF91B29CE4D46002C07C3 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A5FBF91D29CE4D47002C07C3 /* MapboxCoreMaps.xcframework in Embed Frameworks */,
+				A5FBF92129CE4D49002C07C3 /* MapboxMobileEvents.xcframework in Embed Frameworks */,
+				A5FBF91A29CE4D46002C07C3 /* MapboxCommon.xcframework in Embed Frameworks */,
+				A5FBF92329CE4D4B002C07C3 /* Turf.xcframework in Embed Frameworks */,
+				A5FBF91F29CE4D48002C07C3 /* MapboxMaps.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		A5FBF8DB29CE4CDA002C07C3 /* PSW_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PSW_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5FBF8DE29CE4CDA002C07C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +77,11 @@
 		A5FBF8FB29CE4CDB002C07C3 /* PSW_TestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PSW_TestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5FBF8FF29CE4CDB002C07C3 /* PSW_TestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSW_TestUITests.swift; sourceTree = "<group>"; };
 		A5FBF90129CE4CDB002C07C3 /* PSW_TestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSW_TestUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A5FBF90F29CE4D32002C07C3 /* MapboxCommon.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = MapboxCommon.xcframework; sourceTree = "<group>"; };
+		A5FBF91029CE4D32002C07C3 /* MapboxMaps.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = MapboxMaps.xcframework; sourceTree = "<group>"; };
+		A5FBF91129CE4D32002C07C3 /* MapboxMobileEvents.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = MapboxMobileEvents.xcframework; sourceTree = "<group>"; };
+		A5FBF91229CE4D32002C07C3 /* MapboxCoreMaps.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = MapboxCoreMaps.xcframework; sourceTree = "<group>"; };
+		A5FBF91729CE4D40002C07C3 /* Turf.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Turf.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +89,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5FBF91C29CE4D47002C07C3 /* MapboxCoreMaps.xcframework in Frameworks */,
+				A5FBF91929CE4D46002C07C3 /* MapboxCommon.xcframework in Frameworks */,
+				A5FBF91E29CE4D48002C07C3 /* MapboxMaps.xcframework in Frameworks */,
+				A5FBF92229CE4D4B002C07C3 /* Turf.xcframework in Frameworks */,
+				A5FBF92029CE4D49002C07C3 /* MapboxMobileEvents.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +144,7 @@
 				A5FBF8E729CE4CDB002C07C3 /* Assets.xcassets */,
 				A5FBF8E929CE4CDB002C07C3 /* LaunchScreen.storyboard */,
 				A5FBF8EC29CE4CDB002C07C3 /* Info.plist */,
+				A5FBF90E29CE4D21002C07C3 /* MapBox */,
 			);
 			path = PSW_Test;
 			sourceTree = "<group>";
@@ -127,6 +166,18 @@
 			path = PSW_TestUITests;
 			sourceTree = "<group>";
 		};
+		A5FBF90E29CE4D21002C07C3 /* MapBox */ = {
+			isa = PBXGroup;
+			children = (
+				A5FBF90F29CE4D32002C07C3 /* MapboxCommon.xcframework */,
+				A5FBF91229CE4D32002C07C3 /* MapboxCoreMaps.xcframework */,
+				A5FBF91029CE4D32002C07C3 /* MapboxMaps.xcframework */,
+				A5FBF91729CE4D40002C07C3 /* Turf.xcframework */,
+				A5FBF91129CE4D32002C07C3 /* MapboxMobileEvents.xcframework */,
+			);
+			path = MapBox;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,6 +188,7 @@
 				A5FBF8D729CE4CDA002C07C3 /* Sources */,
 				A5FBF8D829CE4CDA002C07C3 /* Frameworks */,
 				A5FBF8D929CE4CDA002C07C3 /* Resources */,
+				A5FBF91B29CE4D46002C07C3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
