@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		A5FBF8DF29CE4CDA002C07C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FBF8DE29CE4CDA002C07C3 /* AppDelegate.swift */; };
 		A5FBF8E129CE4CDA002C07C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FBF8E029CE4CDA002C07C3 /* SceneDelegate.swift */; };
-		A5FBF8E329CE4CDA002C07C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FBF8E229CE4CDA002C07C3 /* ViewController.swift */; };
+		A5FBF8E329CE4CDA002C07C3 /* PSWMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FBF8E229CE4CDA002C07C3 /* PSWMapViewController.swift */; };
 		A5FBF8E829CE4CDB002C07C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5FBF8E729CE4CDB002C07C3 /* Assets.xcassets */; };
 		A5FBF8EB29CE4CDB002C07C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5FBF8E929CE4CDB002C07C3 /* LaunchScreen.storyboard */; };
 		A5FBF8F629CE4CDB002C07C3 /* PSW_TestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FBF8F529CE4CDB002C07C3 /* PSW_TestTests.swift */; };
@@ -25,6 +25,7 @@
 		A5FBF92129CE4D49002C07C3 /* MapboxMobileEvents.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5FBF91129CE4D32002C07C3 /* MapboxMobileEvents.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A5FBF92229CE4D4B002C07C3 /* Turf.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FBF91729CE4D40002C07C3 /* Turf.xcframework */; };
 		A5FBF92329CE4D4B002C07C3 /* Turf.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5FBF91729CE4D40002C07C3 /* Turf.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A5FBF92529CE4E0F002C07C3 /* MapMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FBF92429CE4E0F002C07C3 /* MapMenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +67,7 @@
 		A5FBF8DB29CE4CDA002C07C3 /* PSW_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PSW_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5FBF8DE29CE4CDA002C07C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5FBF8E029CE4CDA002C07C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A5FBF8E229CE4CDA002C07C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A5FBF8E229CE4CDA002C07C3 /* PSWMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSWMapViewController.swift; sourceTree = "<group>"; };
 		A5FBF8E729CE4CDB002C07C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5FBF8EA29CE4CDB002C07C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A5FBF8EC29CE4CDB002C07C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -80,6 +81,7 @@
 		A5FBF91129CE4D32002C07C3 /* MapboxMobileEvents.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = MapboxMobileEvents.xcframework; sourceTree = "<group>"; };
 		A5FBF91229CE4D32002C07C3 /* MapboxCoreMaps.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = MapboxCoreMaps.xcframework; sourceTree = "<group>"; };
 		A5FBF91729CE4D40002C07C3 /* Turf.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Turf.xcframework; sourceTree = "<group>"; };
+		A5FBF92429CE4E0F002C07C3 /* MapMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,7 +139,8 @@
 			children = (
 				A5FBF8DE29CE4CDA002C07C3 /* AppDelegate.swift */,
 				A5FBF8E029CE4CDA002C07C3 /* SceneDelegate.swift */,
-				A5FBF8E229CE4CDA002C07C3 /* ViewController.swift */,
+				A5FBF8E229CE4CDA002C07C3 /* PSWMapViewController.swift */,
+				A5FBF92429CE4E0F002C07C3 /* MapMenuView.swift */,
 				A5FBF8E729CE4CDB002C07C3 /* Assets.xcassets */,
 				A5FBF8E929CE4CDB002C07C3 /* LaunchScreen.storyboard */,
 				A5FBF8EC29CE4CDB002C07C3 /* Info.plist */,
@@ -306,8 +309,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5FBF8E329CE4CDA002C07C3 /* ViewController.swift in Sources */,
+				A5FBF8E329CE4CDA002C07C3 /* PSWMapViewController.swift in Sources */,
 				A5FBF8DF29CE4CDA002C07C3 /* AppDelegate.swift in Sources */,
+				A5FBF92529CE4E0F002C07C3 /* MapMenuView.swift in Sources */,
 				A5FBF8E129CE4CDA002C07C3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
