@@ -20,9 +20,14 @@ final class MapMenuView: UIView {
         return stack
     }()
     
+    // MARK: - Public properties
+    
+    var centerHandler: (() -> Void)?
+    var focusHandler: (() -> Void)?
+    
     // MARK: - Private properties
     
-    private var settingButtons: [UIButton] = []
+    private var isFocusOn = false
     
     // MARK: - init
     
@@ -57,7 +62,7 @@ final class MapMenuView: UIView {
             button.setTitleColor(.black, for: .normal)
             button.semanticContentAttribute = .forceLeftToRight
             button.setImage(UIImage(systemName: Constants.buttonsImagesNames[index]), for: .normal)
-            settingButtons.append(button)
+            button.addTarget(self, action: #selector(settingButtonAction(sender:)), for: .touchUpInside)
             settingsButtonsStackView.addArrangedSubview(button)
         }
     }
@@ -70,8 +75,22 @@ final class MapMenuView: UIView {
             settingsButtonsStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15)
         ])
     }
+    
+    @objc private func settingButtonAction(sender: UIButton) {
+        switch sender.tag {
+        case 0:
+            centerHandler?()
+        case 1:
+            focusHandler?()
+            isFocusOn.toggle()
+            sender.setTitleColor(isFocusOn ? .tintColor : .black, for: .normal)
+        default:
+            break
+        }
+    }
 }
 
+/// Константы
 private extension MapMenuView {
     enum Constants {
         static let buttonsTitles = ["Center", "Focus"]
