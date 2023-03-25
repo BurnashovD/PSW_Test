@@ -14,8 +14,8 @@ final class PSWMapViewController: UIViewController {
     // MARK: - Visual components
     
     private let pswMap: MapView = {
-        let resouceOptions = ResourceOptions(accessToken: "sk.eyJ1IjoiYnVybmFzaG92IiwiYSI6ImNsZm1wMGczczBkZmQzcW1tanhnbDJkYmYifQ.0TCZKhkN_XpvloOrLsIIgA")
-        let camera = CameraOptions(center: CLLocationCoordinate2D(latitude: 55.754219, longitude: 37.624392), zoom: 10)
+        let resouceOptions = ResourceOptions(accessToken: Constants.accessToken)
+        let camera = CameraOptions(center: CLLocationCoordinate2D(latitude: Constants.defaultMoscowLatitude, longitude: Constants.defaultMoscowLongitude), zoom: 10)
         let initOptions = MapInitOptions(resourceOptions: resouceOptions, cameraOptions: camera)
         let map = MapView(frame: .zero, mapInitOptions: initOptions)
         map.autoresizingMask = [.flexibleHeight, .flexibleWidth]
@@ -163,5 +163,8 @@ private extension PSWMapViewController {
         static let locatorImageName = "location"
         static let hiddenMenuLeadingConstraint: CGFloat = 400
         static let shownMenuLeadingConstraint: CGFloat = 0
+        static let defaultMoscowLatitude = 55.754219
+        static let defaultMoscowLongitude = 37.624392
+        static let accessToken = "sk.eyJ1IjoiYnVybmFzaG92IiwiYSI6ImNsZm1wMGczczBkZmQzcW1tanhnbDJkYmYifQ.0TCZKhkN_XpvloOrLsIIgA"
     }
 }
