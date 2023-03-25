@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Протокол презентера карты
 protocol PSWMapPresenterProtocol {
     var isMenuShown: Bool { get set }
 }

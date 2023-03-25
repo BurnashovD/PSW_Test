@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Протокол роутера
 protocol Routable {
     func initialVC()
 }

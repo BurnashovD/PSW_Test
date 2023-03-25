@@ -7,6 +7,5 @@
 
 import Foundation
 
-protocol PSWMapViewProtocol: AnyObject {
-    
-}
+/// Протокол вью карты
+protocol PSWMapViewProtocol: AnyObject {}

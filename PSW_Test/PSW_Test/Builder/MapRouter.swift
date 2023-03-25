@@ -7,13 +7,19 @@
 
 import UIKit
 
+/// Роутер карты
 final class MapRouter: Routable {
+    // MARK: - Visual components
     
     private var navigationController: UINavigationController
+    
+    // MARK: - init
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
+    
+    // MARK: - Public methods
     
     func initialVC() {
         let mapModul = MapModulBuilder.build(navController: navigationController)

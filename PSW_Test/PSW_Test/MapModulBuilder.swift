@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Сборщик модуля карты
 enum MapModulBuilder {
     static func build(navController: UINavigationController) -> UIViewController {
         let view = PSWMapViewController()

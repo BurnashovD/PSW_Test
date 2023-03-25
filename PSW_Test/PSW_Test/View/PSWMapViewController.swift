@@ -8,6 +8,7 @@
 import UIKit
 import MapboxMaps
 
+/// Карта PSW
 final class PSWMapViewController: UIViewController {
     // MARK: - Visual components
     
