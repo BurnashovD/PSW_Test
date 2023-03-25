@@ -89,14 +89,6 @@ final class PSWMapViewController: UIViewController {
         pswMap.addGestureRecognizer(setLogoTapGesture)
     }
     
-    private func addViewAnnotation(coordinate: CLLocationCoordinate2D) {
-        guard let presenter = presenter else { return }
-        pswMap.viewAnnotations.remove(presenter.isFocusOn ? focusMarkerImageView : pswLogoImageView)
-        let options = ViewAnnotationOptions(geometry: Point(coordinate), allowOverlap: true, anchor: .center)
-        try? self.pswMap.viewAnnotations.add(presenter.isFocusOn ? focusMarkerImageView : pswLogoImageView, options: options)
-        presenter.createPolyline()
-    }
-    
     private func bindMenu() {
         mapMenuView.centerHandler = { [weak self] in
             guard let self = self else { return }
@@ -129,24 +121,29 @@ final class PSWMapViewController: UIViewController {
     }
     
     @objc private func showHideSettingsMenuAction() {
-        guard var presenter = presenter else { return }
-        mapMenuLeadingConstraint.constant = presenter.isMenuShown ? Constants.hiddenMenuLeadingConstraint : Constants.shownMenuLeadingConstraint
+        guard let presenter = presenter else { return }
+        mapMenuLeadingConstraint.constant = presenter.mapMenuLeadingConstraint()
         UIView.animate(withDuration: 0.5) {
             self.mapMenuView.superview?.layoutIfNeeded()
         }
-        presenter.isMenuShown.toggle()
+        presenter.toggleMenuFlag()
     }
     
     @objc private func addLogoOnMapAction(gesture: UITapGestureRecognizer) {
         let touchLocation = gesture.location(in: pswMap)
         let coordinate = pswMap.mapboxMap.coordinate(for: touchLocation)
         presenter?.setupCoordinates(coordinate)
-        addViewAnnotation(coordinate: coordinate)
+        presenter?.addViewAnnotation(coordinate)
     }
 }
 
 /// Реализация протокола вью
 extension PSWMapViewController: PSWMapViewProtocol {
+    func createAnnotation(isFocusOn: Bool, options: ViewAnnotationOptions) {
+        pswMap.viewAnnotations.remove(isFocusOn ? focusMarkerImageView : pswLogoImageView)
+        try? self.pswMap.viewAnnotations.add(isFocusOn ? focusMarkerImageView : pswLogoImageView, options: options)
+    }
+    
     func setCamera(_ camera: CameraOptions) {
         pswMap.camera.ease(to: camera, duration: 0.5)
     }

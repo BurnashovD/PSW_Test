@@ -11,18 +11,15 @@ import MapboxMaps
 
 /// Презентер карты
 final class PSWMapPresenter: PSWMapPresenterProtocol {
-    // MARK: - Public properties
-    
-    var isMenuShown = false
-    var isFocusOn = false
-    var currentLogoCoordinate: CLLocationCoordinate2D?
-    var currentFocusMarkerCoordinate: CLLocationCoordinate2D?
-    var annotationManager: PolylineAnnotationManager?
-    
     // MARK: - Private properties
     
     private weak var view: PSWMapViewProtocol?
     private var router: Routable
+    private var isFocusOn = false
+    private var isMenuShown = false
+    private var currentLogoCoordinate: CLLocationCoordinate2D?
+    private var currentFocusMarkerCoordinate: CLLocationCoordinate2D?
+    private var annotationManager: PolylineAnnotationManager?
     
     // MARK: - init
     
@@ -67,11 +64,27 @@ final class PSWMapPresenter: PSWMapPresenterProtocol {
         let camera = CameraOptions(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), zoom: 13)
         view?.setCamera(camera)
     }
+    
+    func addViewAnnotation(_ coordinate: CLLocationCoordinate2D) {
+        let options = ViewAnnotationOptions(geometry: Point(coordinate), allowOverlap: true, anchor: .center)
+        view?.createAnnotation(isFocusOn: isFocusOn, options: options)
+        createPolyline()
+    }
+    
+    func mapMenuLeadingConstraint() -> CGFloat {
+        isMenuShown ? Constants.hiddenMenuLeadingConstraint : Constants.shownMenuLeadingConstraint
+    }
+    
+    func toggleMenuFlag() {
+        isMenuShown.toggle()
+    }
 }
 
 /// Константы
 private extension PSWMapPresenter {
     enum Constants {
         static let annotationManagerId = "psw"
+        static let hiddenMenuLeadingConstraint: CGFloat = 400
+        static let shownMenuLeadingConstraint: CGFloat = 0
     }
 }

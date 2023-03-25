@@ -22,8 +22,8 @@ final class MapMenuView: UIView {
     
     // MARK: - Public properties
     
-    var centerHandler: (() -> Void)?
-    var focusHandler: (() -> Void)?
+    var centerHandler: DefaultHandler?
+    var focusHandler: DefaultHandler?
     
     // MARK: - Private properties
     

@@ -32,6 +32,7 @@
 		A5FBF92F29CEFC9A002C07C3 /* MapModulBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FBF92E29CEFC9A002C07C3 /* MapModulBuilder.swift */; };
 		A5FBF93229CEFE35002C07C3 /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FBF93129CEFE35002C07C3 /* Routable.swift */; };
 		A5FBF93429CEFE4C002C07C3 /* MapRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FBF93329CEFE4C002C07C3 /* MapRouter.swift */; };
+		A5FBF93629CF7819002C07C3 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FBF93529CF7819002C07C3 /* Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		A5FBF92E29CEFC9A002C07C3 /* MapModulBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModulBuilder.swift; sourceTree = "<group>"; };
 		A5FBF93129CEFE35002C07C3 /* Routable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
 		A5FBF93329CEFE4C002C07C3 /* MapRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRouter.swift; sourceTree = "<group>"; };
+		A5FBF93529CF7819002C07C3 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 				A5FBF93029CEFE24002C07C3 /* Builder */,
 				A5FBF92429CE4E0F002C07C3 /* MapMenuView.swift */,
 				A5FBF92E29CEFC9A002C07C3 /* MapModulBuilder.swift */,
+				A5FBF93529CF7819002C07C3 /* Helpers.swift */,
 				A5FBF8E729CE4CDB002C07C3 /* Assets.xcassets */,
 				A5FBF8E929CE4CDB002C07C3 /* LaunchScreen.storyboard */,
 				A5FBF8EC29CE4CDB002C07C3 /* Info.plist */,
@@ -355,6 +358,7 @@
 				A5FBF8DF29CE4CDA002C07C3 /* AppDelegate.swift in Sources */,
 				A5FBF92929CEFBF5002C07C3 /* PSWMapPresenterProtocol.swift in Sources */,
 				A5FBF92529CE4E0F002C07C3 /* MapMenuView.swift in Sources */,
+				A5FBF93629CF7819002C07C3 /* Helpers.swift in Sources */,
 				A5FBF8E129CE4CDA002C07C3 /* SceneDelegate.swift in Sources */,
 				A5FBF92729CEFBE2002C07C3 /* PSWMapPresenter.swift in Sources */,
 				A5FBF92F29CEFC9A002C07C3 /* MapModulBuilder.swift in Sources */,
