@@ -155,7 +155,7 @@
 				A5FBF8E029CE4CDA002C07C3 /* SceneDelegate.swift */,
 				A5FBF92C29CEFC51002C07C3 /* View */,
 				A5FBF92D29CEFC5E002C07C3 /* Presenter */,
-				A5FBF93029CEFE24002C07C3 /* Builder */,
+				A5FBF93029CEFE24002C07C3 /* Router */,
 				A5FBF92429CE4E0F002C07C3 /* MapMenuView.swift */,
 				A5FBF92E29CEFC9A002C07C3 /* MapModulBuilder.swift */,
 				A5FBF93529CF7819002C07C3 /* Helpers.swift */,
@@ -214,13 +214,13 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		A5FBF93029CEFE24002C07C3 /* Builder */ = {
+		A5FBF93029CEFE24002C07C3 /* Router */ = {
 			isa = PBXGroup;
 			children = (
 				A5FBF93129CEFE35002C07C3 /* Routable.swift */,
 				A5FBF93329CEFE4C002C07C3 /* MapRouter.swift */,
 			);
-			path = Builder;
+			path = Router;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
