@@ -26,6 +26,12 @@
 		A5FBF92229CE4D4B002C07C3 /* Turf.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FBF91729CE4D40002C07C3 /* Turf.xcframework */; };
 		A5FBF92329CE4D4B002C07C3 /* Turf.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5FBF91729CE4D40002C07C3 /* Turf.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A5FBF92529CE4E0F002C07C3 /* MapMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FBF92429CE4E0F002C07C3 /* MapMenuView.swift */; };
+		A5FBF92729CEFBE2002C07C3 /* PSWMapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FBF92629CEFBE2002C07C3 /* PSWMapPresenter.swift */; };
+		A5FBF92929CEFBF5002C07C3 /* PSWMapPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FBF92829CEFBF5002C07C3 /* PSWMapPresenterProtocol.swift */; };
+		A5FBF92B29CEFC2F002C07C3 /* PSWMapViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FBF92A29CEFC2F002C07C3 /* PSWMapViewProtocol.swift */; };
+		A5FBF92F29CEFC9A002C07C3 /* MapModulBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FBF92E29CEFC9A002C07C3 /* MapModulBuilder.swift */; };
+		A5FBF93229CEFE35002C07C3 /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FBF93129CEFE35002C07C3 /* Routable.swift */; };
+		A5FBF93429CEFE4C002C07C3 /* MapRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FBF93329CEFE4C002C07C3 /* MapRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +88,12 @@
 		A5FBF91229CE4D32002C07C3 /* MapboxCoreMaps.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = MapboxCoreMaps.xcframework; sourceTree = "<group>"; };
 		A5FBF91729CE4D40002C07C3 /* Turf.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Turf.xcframework; sourceTree = "<group>"; };
 		A5FBF92429CE4E0F002C07C3 /* MapMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMenuView.swift; sourceTree = "<group>"; };
+		A5FBF92629CEFBE2002C07C3 /* PSWMapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSWMapPresenter.swift; sourceTree = "<group>"; };
+		A5FBF92829CEFBF5002C07C3 /* PSWMapPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSWMapPresenterProtocol.swift; sourceTree = "<group>"; };
+		A5FBF92A29CEFC2F002C07C3 /* PSWMapViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSWMapViewProtocol.swift; sourceTree = "<group>"; };
+		A5FBF92E29CEFC9A002C07C3 /* MapModulBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModulBuilder.swift; sourceTree = "<group>"; };
+		A5FBF93129CEFE35002C07C3 /* Routable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
+		A5FBF93329CEFE4C002C07C3 /* MapRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,8 +151,11 @@
 			children = (
 				A5FBF8DE29CE4CDA002C07C3 /* AppDelegate.swift */,
 				A5FBF8E029CE4CDA002C07C3 /* SceneDelegate.swift */,
-				A5FBF8E229CE4CDA002C07C3 /* PSWMapViewController.swift */,
+				A5FBF92C29CEFC51002C07C3 /* View */,
+				A5FBF92D29CEFC5E002C07C3 /* Presenter */,
+				A5FBF93029CEFE24002C07C3 /* Builder */,
 				A5FBF92429CE4E0F002C07C3 /* MapMenuView.swift */,
+				A5FBF92E29CEFC9A002C07C3 /* MapModulBuilder.swift */,
 				A5FBF8E729CE4CDB002C07C3 /* Assets.xcassets */,
 				A5FBF8E929CE4CDB002C07C3 /* LaunchScreen.storyboard */,
 				A5FBF8EC29CE4CDB002C07C3 /* Info.plist */,
@@ -176,6 +191,33 @@
 				A5FBF91129CE4D32002C07C3 /* MapboxMobileEvents.xcframework */,
 			);
 			path = MapBox;
+			sourceTree = "<group>";
+		};
+		A5FBF92C29CEFC51002C07C3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A5FBF8E229CE4CDA002C07C3 /* PSWMapViewController.swift */,
+				A5FBF92A29CEFC2F002C07C3 /* PSWMapViewProtocol.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A5FBF92D29CEFC5E002C07C3 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A5FBF92629CEFBE2002C07C3 /* PSWMapPresenter.swift */,
+				A5FBF92829CEFBF5002C07C3 /* PSWMapPresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A5FBF93029CEFE24002C07C3 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				A5FBF93129CEFE35002C07C3 /* Routable.swift */,
+				A5FBF93329CEFE4C002C07C3 /* MapRouter.swift */,
+			);
+			path = Builder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,8 +353,14 @@
 			files = (
 				A5FBF8E329CE4CDA002C07C3 /* PSWMapViewController.swift in Sources */,
 				A5FBF8DF29CE4CDA002C07C3 /* AppDelegate.swift in Sources */,
+				A5FBF92929CEFBF5002C07C3 /* PSWMapPresenterProtocol.swift in Sources */,
 				A5FBF92529CE4E0F002C07C3 /* MapMenuView.swift in Sources */,
 				A5FBF8E129CE4CDA002C07C3 /* SceneDelegate.swift in Sources */,
+				A5FBF92729CEFBE2002C07C3 /* PSWMapPresenter.swift in Sources */,
+				A5FBF92F29CEFC9A002C07C3 /* MapModulBuilder.swift in Sources */,
+				A5FBF93429CEFE4C002C07C3 /* MapRouter.swift in Sources */,
+				A5FBF93229CEFE35002C07C3 /* Routable.swift in Sources */,
+				A5FBF92B29CEFC2F002C07C3 /* PSWMapViewProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
