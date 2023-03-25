@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Вью с меню настроек
 final class MapMenuView: UIView {
     // MARK: - Visual components
     
@@ -49,7 +50,7 @@ final class MapMenuView: UIView {
     }
     
     private func addSettingsButtonToStack() {
-        (0 ... 1).forEach { index in
+        (Constants.buttonsRange).forEach { index in
             let button = UIButton()
             button.setTitle(Constants.buttonsTitles[index], for: .normal)
             button.tag = index
@@ -75,5 +76,6 @@ private extension MapMenuView {
     enum Constants {
         static let buttonsTitles = ["Center", "Focus"]
         static let buttonsImagesNames = ["location.viewfinder", "hand.tap"]
+        static let buttonsRange: ClosedRange = 0 ... 1
     }
 }

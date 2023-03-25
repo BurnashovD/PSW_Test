@@ -8,6 +8,7 @@
 import UIKit
 import MapboxMaps
 
+/// Карта PSW
 final class PSWMapViewController: UIViewController {
     // MARK: - Visual components
     
@@ -37,7 +38,7 @@ final class PSWMapViewController: UIViewController {
     
     // MARK: - Private properties
     
-    private var isMenuShown = false
+    var presenter: PSWMapPresenterProtocol?
     
     // MARK: - Public methods
 
@@ -53,7 +54,7 @@ final class PSWMapViewController: UIViewController {
     private func configureUI() {
         view.addSubview(pswMap)
         view.addSubview(mapMenuView)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose,
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search,
                                                             target: self,
                                                             action: #selector(showHideSettingsMenuAction))
     }
@@ -78,11 +79,17 @@ final class PSWMapViewController: UIViewController {
     }
     
     @objc private func showHideSettingsMenuAction() {
-        mapMenuLeadingConstraint.constant = isMenuShown ? 400 : 0
+        guard
+            var presenter = presenter
+        else { return }
+        mapMenuLeadingConstraint.constant = presenter.isMenuShown ? 400 : 0
         UIView.animate(withDuration: 0.5) {
             self.mapMenuView.superview?.layoutIfNeeded()
         }
-        isMenuShown.toggle()
+        presenter.isMenuShown.toggle()
     }
 }
 
+extension PSWMapViewController: PSWMapViewProtocol {
+    
+}
