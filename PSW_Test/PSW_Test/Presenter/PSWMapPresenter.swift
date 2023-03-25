@@ -12,6 +12,7 @@ final class PSWMapPresenter: PSWMapPresenterProtocol {
     // MARK: - Public properties
     
     var isMenuShown = false
+    var isFocusOn = false
     
     // MARK: - Private properties
     

@@ -7,9 +7,10 @@
 
 import UIKit
 import MapboxMaps
+import CoreLocation
 
 /// Карта PSW
-final class PSWMapViewController: UIViewController {
+final class PSWMapViewController: UIViewController, UIGestureRecognizerDelegate {
     // MARK: - Visual components
     
     private let pswMap: MapView = {
@@ -34,19 +35,44 @@ final class PSWMapViewController: UIViewController {
         return view
     }()
     
+    private let pswLogoImageView: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "pswLogo")
+        image.layer.cornerRadius = 25
+        image.clipsToBounds = true
+        image.frame = CGRect(x: 0, y: 0, width: 45, height: 45)
+        return image
+    }()
+    
+    private let focusMarkerImageView: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "location")
+        image.frame = CGRect(x: 0, y: 0, width: 45, height: 45)
+        return image
+    }()
+    
+    private let setLogoTapGesture = UITapGestureRecognizer()
+    
     private var mapMenuLeadingConstraint = NSLayoutConstraint()
+    
+    // MARK: - Public properties
+    
+    var presenter: PSWMapPresenterProtocol?
     
     // MARK: - Private properties
     
-    var presenter: PSWMapPresenterProtocol?
+    private var currentLogoCoordinate: CLLocationCoordinate2D?
+    private var currentFocusMarkerCoordinate: CLLocationCoordinate2D?
     
     // MARK: - Public methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        setupLogoGesture()
         createMapAnchors()
         createMapMenuViewAnchors()
+        bindMenu()
     }
     
     // MARK: - Private methods
@@ -57,6 +83,18 @@ final class PSWMapViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search,
                                                             target: self,
                                                             action: #selector(showHideSettingsMenuAction))
+    }
+    
+    private func setupLogoGesture() {
+        setLogoTapGesture.addTarget(self, action: #selector(addLogoOnMapAction(gesture:)))
+        pswMap.addGestureRecognizer(setLogoTapGesture)
+    }
+    
+    private func addViewAnnotation(coordinate: CLLocationCoordinate2D) {
+        guard let presenter = presenter else { return }
+        pswMap.viewAnnotations.remove(presenter.isFocusOn ? focusMarkerImageView : pswLogoImageView)
+        let options = ViewAnnotationOptions(geometry: Point(coordinate), allowOverlap: true, anchor: .center)
+        try? self.pswMap.viewAnnotations.add(presenter.isFocusOn ? focusMarkerImageView : pswLogoImageView, options: options)
     }
     
     private func createMapAnchors() {
@@ -78,6 +116,25 @@ final class PSWMapViewController: UIViewController {
         ])
     }
     
+    private func bindMenu() {
+        mapMenuView.centerHandler = { [weak self] in
+            guard
+                let self = self,
+                let location = self.currentLogoCoordinate
+            else { return }
+            let camera = CameraOptions(center: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude), zoom: 12)
+            self.pswMap.mapboxMap.setCamera(to: camera)
+        }
+        
+        mapMenuView.focusHandler = { [weak self] in
+            guard
+                let self = self,
+                var presenter = self.presenter
+            else { return }
+            presenter.isFocusOn.toggle()
+        }
+    }
+    
     @objc private func showHideSettingsMenuAction() {
         guard
             var presenter = presenter
@@ -88,8 +145,13 @@ final class PSWMapViewController: UIViewController {
         }
         presenter.isMenuShown.toggle()
     }
+    
+    @objc private func addLogoOnMapAction(gesture: UITapGestureRecognizer) {
+        let touchLocation = gesture.location(in: pswMap)
+        let coordinate = pswMap.mapboxMap.coordinate(for: touchLocation)
+        currentLogoCoordinate = coordinate
+        addViewAnnotation(coordinate: coordinate)
+    }
 }
 
-extension PSWMapViewController: PSWMapViewProtocol {
-    
-}
+extension PSWMapViewController: PSWMapViewProtocol {}
