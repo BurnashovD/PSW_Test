@@ -6,6 +6,10 @@
 //
 
 import Foundation
+import MapboxMaps
 
 /// Протокол вью карты
-protocol PSWMapViewProtocol: AnyObject {}
+protocol PSWMapViewProtocol: AnyObject {
+    func setCamera(_ camera: CameraOptions)
+    func removeAnnotation()
+}

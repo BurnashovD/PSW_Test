@@ -10,7 +10,7 @@ import MapboxMaps
 import CoreLocation
 
 /// Карта PSW
-final class PSWMapViewController: UIViewController, UIGestureRecognizerDelegate {
+final class PSWMapViewController: UIViewController {
     // MARK: - Visual components
     
     private let pswMap: MapView = {
@@ -37,7 +37,7 @@ final class PSWMapViewController: UIViewController, UIGestureRecognizerDelegate 
     
     private let pswLogoImageView: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "pswLogo")
+        image.image = UIImage(named: Constants.pswLogoImageName)
         image.layer.cornerRadius = 25
         image.clipsToBounds = true
         image.frame = CGRect(x: 0, y: 0, width: 45, height: 45)
@@ -46,7 +46,7 @@ final class PSWMapViewController: UIViewController, UIGestureRecognizerDelegate 
     
     private let focusMarkerImageView: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "location")
+        image.image = UIImage(named: Constants.locatorImageName)
         image.frame = CGRect(x: 0, y: 0, width: 45, height: 45)
         return image
     }()
@@ -59,30 +59,29 @@ final class PSWMapViewController: UIViewController, UIGestureRecognizerDelegate 
     
     var presenter: PSWMapPresenterProtocol?
     
-    // MARK: - Private properties
-    
-    private var currentLogoCoordinate: CLLocationCoordinate2D?
-    private var currentFocusMarkerCoordinate: CLLocationCoordinate2D?
-    
     // MARK: - Public methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        setupLogoGesture()
-        createMapAnchors()
-        createMapMenuViewAnchors()
+        setupLayout()
         bindMenu()
     }
     
     // MARK: - Private methods
     
     private func configureUI() {
+        setupLogoGesture()
         view.addSubview(pswMap)
         view.addSubview(mapMenuView)
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search,
                                                             target: self,
                                                             action: #selector(showHideSettingsMenuAction))
+    }
+    
+    private func setupLayout() {
+        createMapAnchors()
+        createMapMenuViewAnchors()
     }
     
     private func setupLogoGesture() {
@@ -95,6 +94,19 @@ final class PSWMapViewController: UIViewController, UIGestureRecognizerDelegate 
         pswMap.viewAnnotations.remove(presenter.isFocusOn ? focusMarkerImageView : pswLogoImageView)
         let options = ViewAnnotationOptions(geometry: Point(coordinate), allowOverlap: true, anchor: .center)
         try? self.pswMap.viewAnnotations.add(presenter.isFocusOn ? focusMarkerImageView : pswLogoImageView, options: options)
+        presenter.createPolyline()
+    }
+    
+    private func bindMenu() {
+        mapMenuView.centerHandler = { [weak self] in
+            guard let self = self else { return }
+            self.presenter?.createMapCamera()
+        }
+        
+        mapMenuView.focusHandler = { [weak self] in
+            guard let self = self else { return }
+            self.presenter?.manageAnnotation(self.pswMap)
+        }
     }
     
     private func createMapAnchors() {
@@ -107,7 +119,7 @@ final class PSWMapViewController: UIViewController, UIGestureRecognizerDelegate 
     }
     
     private func createMapMenuViewAnchors() {
-        mapMenuLeadingConstraint = mapMenuView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 400)
+        mapMenuLeadingConstraint = mapMenuView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: Constants.hiddenMenuLeadingConstraint)
         NSLayoutConstraint.activate([
             mapMenuView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
             mapMenuView.heightAnchor.constraint(equalToConstant: 90),
@@ -116,30 +128,9 @@ final class PSWMapViewController: UIViewController, UIGestureRecognizerDelegate 
         ])
     }
     
-    private func bindMenu() {
-        mapMenuView.centerHandler = { [weak self] in
-            guard
-                let self = self,
-                let location = self.currentLogoCoordinate
-            else { return }
-            let camera = CameraOptions(center: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude), zoom: 12)
-            self.pswMap.mapboxMap.setCamera(to: camera)
-        }
-        
-        mapMenuView.focusHandler = { [weak self] in
-            guard
-                let self = self,
-                var presenter = self.presenter
-            else { return }
-            presenter.isFocusOn.toggle()
-        }
-    }
-    
     @objc private func showHideSettingsMenuAction() {
-        guard
-            var presenter = presenter
-        else { return }
-        mapMenuLeadingConstraint.constant = presenter.isMenuShown ? 400 : 0
+        guard var presenter = presenter else { return }
+        mapMenuLeadingConstraint.constant = presenter.isMenuShown ? Constants.hiddenMenuLeadingConstraint : Constants.shownMenuLeadingConstraint
         UIView.animate(withDuration: 0.5) {
             self.mapMenuView.superview?.layoutIfNeeded()
         }
@@ -149,9 +140,28 @@ final class PSWMapViewController: UIViewController, UIGestureRecognizerDelegate 
     @objc private func addLogoOnMapAction(gesture: UITapGestureRecognizer) {
         let touchLocation = gesture.location(in: pswMap)
         let coordinate = pswMap.mapboxMap.coordinate(for: touchLocation)
-        currentLogoCoordinate = coordinate
+        presenter?.setupCoordinates(coordinate)
         addViewAnnotation(coordinate: coordinate)
     }
 }
 
-extension PSWMapViewController: PSWMapViewProtocol {}
+/// Реализация протокола вью
+extension PSWMapViewController: PSWMapViewProtocol {
+    func setCamera(_ camera: CameraOptions) {
+        pswMap.mapboxMap.setCamera(to: camera)
+    }
+    
+    func removeAnnotation() {
+        pswMap.viewAnnotations.remove(focusMarkerImageView)
+    }
+}
+
+/// Константы
+private extension PSWMapViewController {
+    enum Constants {
+        static let pswLogoImageName = "pswLogo"
+        static let locatorImageName = "location"
+        static let hiddenMenuLeadingConstraint: CGFloat = 400
+        static let shownMenuLeadingConstraint: CGFloat = 0
+    }
+}

@@ -27,7 +27,6 @@ final class MapMenuView: UIView {
     
     // MARK: - Private properties
     
-    private var settingButtons: [UIButton] = []
     private var isFocusOn = false
     
     // MARK: - init
@@ -64,7 +63,6 @@ final class MapMenuView: UIView {
             button.semanticContentAttribute = .forceLeftToRight
             button.setImage(UIImage(systemName: Constants.buttonsImagesNames[index]), for: .normal)
             button.addTarget(self, action: #selector(settingButtonAction(sender:)), for: .touchUpInside)
-            settingButtons.append(button)
             settingsButtonsStackView.addArrangedSubview(button)
         }
     }
@@ -92,6 +90,7 @@ final class MapMenuView: UIView {
     }
 }
 
+/// Константы
 private extension MapMenuView {
     enum Constants {
         static let buttonsTitles = ["Center", "Focus"]
