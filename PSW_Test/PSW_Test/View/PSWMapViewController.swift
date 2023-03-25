@@ -148,7 +148,7 @@ final class PSWMapViewController: UIViewController {
 /// Реализация протокола вью
 extension PSWMapViewController: PSWMapViewProtocol {
     func setCamera(_ camera: CameraOptions) {
-        pswMap.mapboxMap.setCamera(to: camera)
+        pswMap.camera.ease(to: camera, duration: 0.5)
     }
     
     func removeAnnotation() {
