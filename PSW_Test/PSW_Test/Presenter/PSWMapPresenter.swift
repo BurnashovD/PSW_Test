@@ -30,25 +30,6 @@ final class PSWMapPresenter: PSWMapPresenterProtocol {
     
     // MARK: - Public methods
     
-    func createPolyline() {
-        guard
-            let firstCoordinate = currentLogoCoordinate,
-            let secondCoordinate = currentFocusMarkerCoordinate
-        else { return }
-        let coordinates = [firstCoordinate, secondCoordinate]
-        var polyline = PolylineAnnotation(lineCoordinates: coordinates)
-        polyline.lineWidth = 2
-        annotationManager?.annotations = [polyline]
-    }
-    
-    func setupCoordinates(_ coordinates: CLLocationCoordinate2D) {
-        guard isFocusOn else {
-            currentLogoCoordinate = coordinates
-            return
-        }
-        currentFocusMarkerCoordinate = coordinates
-    }
-    
     func manageAnnotation(_ map: MapView) {
         isFocusOn.toggle()
         annotationManager = map.annotations.makePolylineAnnotationManager(id: Constants.annotationManagerId)
@@ -66,6 +47,7 @@ final class PSWMapPresenter: PSWMapPresenterProtocol {
     }
     
     func addViewAnnotation(_ coordinate: CLLocationCoordinate2D) {
+        setupCoordinates(coordinate)
         let options = ViewAnnotationOptions(geometry: Point(coordinate), allowOverlap: true, anchor: .center)
         view?.createAnnotation(isFocusOn: isFocusOn, options: options)
         createPolyline()
@@ -77,6 +59,27 @@ final class PSWMapPresenter: PSWMapPresenterProtocol {
     
     func toggleMenuFlag() {
         isMenuShown.toggle()
+    }
+    
+    // MARK: - Private methods
+    
+    private func createPolyline() {
+        guard
+            let firstCoordinate = currentLogoCoordinate,
+            let secondCoordinate = currentFocusMarkerCoordinate
+        else { return }
+        let coordinates = [firstCoordinate, secondCoordinate]
+        var polyline = PolylineAnnotation(lineCoordinates: coordinates)
+        polyline.lineWidth = 2
+        annotationManager?.annotations = [polyline]
+    }
+    
+    private func setupCoordinates(_ coordinates: CLLocationCoordinate2D) {
+        guard isFocusOn else {
+            currentLogoCoordinate = coordinates
+            return
+        }
+        currentFocusMarkerCoordinate = coordinates
     }
 }
 

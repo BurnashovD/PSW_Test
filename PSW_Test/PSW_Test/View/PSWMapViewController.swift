@@ -132,7 +132,6 @@ final class PSWMapViewController: UIViewController {
     @objc private func addLogoOnMapAction(gesture: UITapGestureRecognizer) {
         let touchLocation = gesture.location(in: pswMap)
         let coordinate = pswMap.mapboxMap.coordinate(for: touchLocation)
-        presenter?.setupCoordinates(coordinate)
         presenter?.addViewAnnotation(coordinate)
     }
 }

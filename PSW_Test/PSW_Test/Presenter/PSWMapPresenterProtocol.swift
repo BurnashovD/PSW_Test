@@ -11,11 +11,9 @@ import MapboxMaps
 
 /// Протокол презентера карты
 protocol PSWMapPresenterProtocol {
-    func createPolyline()
-    func createMapCamera()
     func toggleMenuFlag()
+    func createMapCamera()
     func manageAnnotation(_ map: MapView)
-    func setupCoordinates(_ coordinates: CLLocationCoordinate2D)
     func addViewAnnotation(_ coordinate: CLLocationCoordinate2D)
     func mapMenuLeadingConstraint() -> CGFloat
 }
