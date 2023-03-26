@@ -11,13 +11,9 @@ import MapboxMaps
 
 /// Протокол презентера карты
 protocol PSWMapPresenterProtocol {
-    var isMenuShown: Bool { get set }
-    var isFocusOn: Bool { get set }
-    var currentLogoCoordinate: CLLocationCoordinate2D? { get set }
-    var currentFocusMarkerCoordinate: CLLocationCoordinate2D? { get set }
-    var annotationManager: PolylineAnnotationManager? { get set }
-    func createPolyline()
-    func setupCoordinates(_ coordinates: CLLocationCoordinate2D)
-    func manageAnnotation(_ map: MapView)
+    func toggleMenuFlag()
     func createMapCamera()
+    func manageAnnotation(_ map: MapView)
+    func addViewAnnotation(_ coordinate: CLLocationCoordinate2D)
+    func mapMenuLeadingConstraint() -> CGFloat
 }

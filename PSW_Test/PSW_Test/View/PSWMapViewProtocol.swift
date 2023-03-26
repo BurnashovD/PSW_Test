@@ -10,6 +10,7 @@ import MapboxMaps
 
 /// Протокол вью карты
 protocol PSWMapViewProtocol: AnyObject {
-    func setCamera(_ camera: CameraOptions)
     func removeAnnotation()
+    func setCamera(_ camera: CameraOptions)
+    func createAnnotation(isFocusOn: Bool, options: ViewAnnotationOptions)
 }
